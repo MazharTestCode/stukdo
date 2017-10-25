@@ -6,13 +6,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#"><i class="fa fa-circle-o-notch" aria-hidden="true"></i> Stukdo</a>
+      <%= link_to "<i class='fa fa-circle-o-notch'></i> Stukdo".html_safe ,root_path, class: "navbar-brand" %>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       
       <ul class="nav navbar-nav navbar-right">
+
+        <% if current_user %>
+
+        <li><%= link_to "Settings", edit_user_registration_path %></li>
+        <li><%= link_to "Logout", destroy_user_session_path , method: :delete %></li>
         
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <% else %>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Login", new_user_session_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>
